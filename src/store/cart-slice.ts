@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-type CartItem = {
+export type CartItem = {
   id: string;
   title: string;
   price: number;
@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
-    removeToCart(state, action: PayloadAction<string>) {
+    removeFromCart(state, action: PayloadAction<string>) {
       const itemIndex = state.items.findIndex(
         (item) => item.id === action.payload
       );
@@ -47,4 +47,4 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;

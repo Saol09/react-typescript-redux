@@ -5,9 +5,8 @@ import { useCartSelector } from '../store/hooks.ts';
 
 export default function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
-
   const cartQuantity = useCartSelector((state) =>
-    state.cart.items.reduce((val, item) => (val = item.quantity), 0)
+    state.cart.items.reduce((val, item) => val + item.quantity, 0)
   );
 
   function handleOpenCartClick() {
